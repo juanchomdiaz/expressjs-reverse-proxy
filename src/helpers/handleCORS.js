@@ -8,6 +8,8 @@ const handleCors = (app) => {
   //Workaround: in some cases, origin is undefined and host must be read
   app.use(function (req, res, next) {
     req.headers.origin = req.headers.origin || req.headers.host;
+    console.log(req.headers.origin);
+
     next();
   });
 
@@ -16,7 +18,7 @@ const handleCors = (app) => {
       // Denny requests with no origin
       // (like mobile apps or curl requests)
       console.log(origin);
-      
+
       if (!origin) return callback(null, false);
 
       if (!allowedOrigins.includes(origin)) {
