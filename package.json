@@ -4,6 +4,7 @@
   "description": "A simple reverse proxy to hide client-side api calls",
   "main": "app.js",
   "scripts": {
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
