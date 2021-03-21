@@ -10,7 +10,7 @@ const app = express();
 
 const proxyOptions = {
   target: config.apiBaseUrl,
-  pathRewrite: { "^/proxy": "" },
+  pathRewrite: { "^/": "" },
   onProxyReq: (proxyReq, req, res) => {
     config.apiRequiredHeaders.forEach((header) => {
       proxyReq.setHeader(header.name, header.value);
