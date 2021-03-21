@@ -15,6 +15,8 @@ const handleCors = (app) => {
     origin: (origin, callback) => {
       // Denny requests with no origin
       // (like mobile apps or curl requests)
+      console.log(origin);
+      
       if (!origin) return callback(null, false);
 
       if (!allowedOrigins.includes(origin)) {
