@@ -20,6 +20,6 @@ const proxyOptions = {
   changeOrigin: true,
 };
 
-app.use("/proxy", createProxyMiddleware(proxyOptions));
+app.use("/", createProxyMiddleware(proxyOptions));
 
 app.listen( config.port , () => console.log( `Started server on port ${config.port}` ) );
