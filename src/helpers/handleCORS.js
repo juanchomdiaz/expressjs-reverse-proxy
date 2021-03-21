@@ -5,12 +5,6 @@ const { config } = require("../config");
 const handleCors = (app) => {
   const allowedOrigins = config.allowedOrigins;
 
-  //Workaround: in some cases, origin is undefined and host must be read
-  app.use(function (req, res, next) {
-    req.headers.origin = req.headers.origin || req.headers.host;
-    next();
-  });
-
   const corsOptions = {
     origin: (origin, callback) => {
       // Denny requests with no origin
