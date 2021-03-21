@@ -1,24 +1,22 @@
-const express  = require('express');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const express = require("express");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
-const config = require('./config');
+const { config } = require("./config");
 
 const app = express();
 
-console.log(config.apiBaseUrl);
-
 const proxyOptions = {
-    target: config.apiBaseUrl,
-    pathRewrite: {'^/proxy' : ''},
-    onProxyReq: (proxyReq, req, res) => {
-        config.apiRequiredHeaders.forEach(header => {
-            proxyReq.setHeader(header.name, header.value);
-        });
-    },
-    logLevel: config.logLevel,
-    changeOrigin: true
-}
+  target: config.apiBaseUrl,
+  pathRewrite: { "^/proxy": "" },
+  onProxyReq: (proxyReq, req, res) => {
+    config.apiRequiredHeaders.forEach((header) => {
+      proxyReq.setHeader(header.name, header.value);
+    });
+  },
+  logLevel: config.logLevel,
+  changeOrigin: true,
+};
 
-app.use('/proxy', createProxyMiddleware(proxyOptions));
+app.use("/proxy", createProxyMiddleware(proxyOptions));
 
 app.listen(config.port);
