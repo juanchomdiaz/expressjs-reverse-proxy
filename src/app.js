@@ -5,6 +5,8 @@ const config = require('./config');
 
 const app = express();
 
+console.log(config.apiBaseUrl);
+
 const proxyOptions = {
     target: config.apiBaseUrl,
     pathRewrite: {'^/proxy' : ''},
