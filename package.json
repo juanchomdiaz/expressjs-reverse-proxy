@@ -1,0 +1,27 @@
+{
+  "name": "expressjs-reverse-proxy",
+  "version": "1.0.0",
+  "description": "A simple reverse proxy to hide client-side api calls",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanchomdiaz/expressjs-reverse-proxy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juanchomdiaz/expressjs-reverse-proxy/issues"
+  },
+  "homepage": "https://github.com/juanchomdiaz/expressjs-reverse-proxy#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-proxy": "^1.18.1"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^1.0.6"
+  }
+}
