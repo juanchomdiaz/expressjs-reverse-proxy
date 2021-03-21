@@ -6,7 +6,7 @@ const { config } = require("./config");
 
 const app = express();
 
-handleCors(app);
+//handleCors(app);
 
 const proxyOptions = {
   target: config.apiBaseUrl,
