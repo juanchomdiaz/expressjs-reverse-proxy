@@ -1,4 +1,5 @@
 const cors = require("cors");
+const { Console } = require("node:console");
 
 const { config } = require("../config");
 
@@ -17,6 +18,8 @@ const handleCors = (app) => {
       // (like mobile apps or curl requests)
       console.log("ORIGINNNN", origin);
 
+      console.log("Allowed", allowedOrigins);
+      
       if (!origin) return callback(null, false);
 
       if (!allowedOrigins.includes(origin)) {
