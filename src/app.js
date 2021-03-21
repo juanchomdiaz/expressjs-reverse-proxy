@@ -1,9 +1,12 @@
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
+const { handleCors } = require('./helpers/handleCORS');
 
 const { config } = require("./config");
 
 const app = express();
+
+handleCors(app);
 
 const proxyOptions = {
   target: config.apiBaseUrl,
@@ -19,4 +22,4 @@ const proxyOptions = {
 
 app.use("/proxy", createProxyMiddleware(proxyOptions));
 
-app.listen(config.port);
+app.listen( config.port , () => console.log( `Started server on port ${config.port}` ) );

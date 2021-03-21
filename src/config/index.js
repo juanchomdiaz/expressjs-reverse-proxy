@@ -18,7 +18,7 @@ const config = {
     logLevel: s3.logLevel || process.env.LOG_LEVEL,
     apiBaseUrl: s3.apiBaseUrl || process.env.API_BASE_URL,
     apiRequiredHeaders: JSON.parse(s3.apiRequiredHeaders || process.env.API_REQUIRED_HEADERS),
-    allowedOrigins: s3.allowedOrigins || process.env.ALLOWED_ORIGINS
+    allowedOrigins: (s3.allowedOrigins || process.env.ALLOWED_ORIGINS).split(',')
 };
 
 module.exports = {
