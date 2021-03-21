@@ -1,18 +1,16 @@
-const dotenv = require('dotenv');
 const express  = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-dotenv.config();
+const config = require('./config');
 
-const app      = express();
-const apiBaseUrl = process.env.API_BASE_URL;
-const apiRequiredHeaders = JSON.parse(process.env.API_REQUIRED_HEADERS);
+const app = express();
+
 
 const proxyOptions = {
-    target: apiBaseUrl,
+    target: config.apiBaseUrl,
     pathRewrite: {'^/api' : ''},
     onProxyReq: (proxyReq, req, res) => {
-        apiRequiredHeaders.forEach(header => {
+        config.apiRequiredHeaders.forEach(header => {
             proxyReq.setHeader(header.name, header.value);
         });
     },
@@ -21,4 +19,4 @@ const proxyOptions = {
 
 app.use('/api', createProxyMiddleware(proxyOptions));
 
-app.listen(8080);
+app.listen(config.port);
